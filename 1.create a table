@@ -1,64 +1,67 @@
-mysql> create table student_marksheets
-    -> (registerno int(3),studentname char(20),studentage int(20));
-Query OK, 0 rows affected, 2 warnings (0.05 sec)
 
-mysql> desc student_marksheets;
-+-------------+----------+------+-----+---------+-------+
-| Field       | Type     | Null | Key | Default | Extra |
-+-------------+----------+------+-----+---------+-------+
-| registerno  | int      | YES  |     | NULL    |       |
-| studentname | char(20) | YES  |     | NULL    |       |
-| studentage  | int      | YES  |     | NULL    |       |
-+-------------+----------+------+-----+---------+-------+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use students;
+Database changed
+mysql> create table student(regno int(3),name char(15),gender char(1),dob int(10),mobileno int(10),city char(10));
+Query OK, 0 rows affected, 3 warnings (0.03 sec)
+
+mysql> desc student;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| regno    | int      | YES  |     | NULL    |       |
+| name     | char(15) | YES  |     | NULL    |       |
+| gender   | char(1)  | YES  |     | NULL    |       |
+| dob      | int      | YES  |     | NULL    |       |
+| mobileno | int      | YES  |     | NULL    |       |
+| city     | char(10) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> create table faculty(facno int(3),facname char(15),gender char(1),dob int(10),mobileno int(10),doj int(10));
+Query OK, 0 rows affected, 4 warnings (0.03 sec)
+
+mysql> desc faculty;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| facno    | int      | YES  |     | NULL    |       |
+| facname  | char(15) | YES  |     | NULL    |       |
+| gender   | char(1)  | YES  |     | NULL    |       |
+| dob      | int      | YES  |     | NULL    |       |
+| mobileno | int      | YES  |     | NULL    |       |
+| doj      | int      | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> create table department(deptno int(10),deptname char(10),depthead char(10));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> desc department;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| deptno   | int      | YES  |     | NULL    |       |
+| deptname | char(10) | YES  |     | NULL    |       |
+| depthead | char(10) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
 
-mysql> insert into student_marksheets values(192110285,'sudarshan',18),(192110283,'bhargav',19),(192110284,'rakesh',21);
-Query OK, 3 rows affected (0.03 sec)
-Records: 3  Duplicates: 0  Warnings: 0
+mysql> alter table faculty add dept char(10);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> select * from student_marksheets;
-+------------+-------------+------------+
-| registerno | studentname | studentage |
-+------------+-------------+------------+
-|  192110285 | sudarshan   |         18 |
-|  192110283 | bhargav     |         19 |
-|  192110284 | rakesh      |         21 |
-+------------+-------------+------------+
-3 rows in set (0.00 sec)
-
-mysql> update student_marksheets
-    -> set studentname='harsh'
-    -> where registerno=192110286;
-Query OK, 0 rows affected (0.00 sec)
-Rows matched: 0  Changed: 0  Warnings: 0
-
-mysql> select * from student_marksheets;
-+------------+-------------+------------+
-| registerno | studentname | studentage |
-+------------+-------------+------------+
-|  192110285 | sudarshan   |         18 |
-|  192110283 | bhargav     |         19 |
-|  192110284 | rakesh      |         21 |
-+------------+-------------+------------+
-3 rows in set (0.00 sec)
-
-mysql> set studentname='harsh'
-    -> where registerno=192110284;
-ERROR 1193 (HY000): Unknown system variable 'studentname'
-mysql> update student_marksheets
-    -> set studentname= 'harsha'
-    -> where registerno=192110284;
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-mysql> select * from student_marksheets;
-+------------+-------------+------------+
-| registerno | studentname | studentage |
-+------------+-------------+------------+
-|  192110285 | sudarshan   |         18 |
-|  192110283 | bhargav     |         19 |
-|  192110284 | harsha      |         21 |
-+------------+-------------+------------+
-3 rows in set (0.00 sec)
-
-mysql>
+mysql> desc faculty;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| facno    | int      | YES  |     | NULL    |       |
+| facname  | char(15) | YES  |     | NULL    |       |
+| gender   | char(1)  | YES  |     | NULL    |       |
+| dob      | int      | YES  |     | NULL    |       |
+| mobileno | int      | YES  |     | NULL    |       |
+| doj      | int      | YES  |     | NULL    |       |
+| dept     | char(10) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
